@@ -1,0 +1,112 @@
+{
+    "adult": false,
+    "backdrop_path": "/path.jpg",
+    "created_by": [
+      {
+        "id": 1,
+        "credit_id": "Credit id",
+        "name": "Name",
+        "gender": 2,
+        "profile_path": "/path.jpg"
+      }
+    ],
+    "episode_run_time": [
+      60
+    ],
+    "first_air_date": "2011-04-17",
+    "genres": [
+      {
+        "id": 1,
+        "name": "Sci-Fi & Fantasy"
+      }
+
+    ],
+    "homepage": "https://google.com",
+    "id": 1,
+    "in_production": false,
+    "languages": [
+      "en"
+    ],
+    "last_air_date": "2019-05-19",
+    "last_episode_to_air": {
+      "air_date": "2019-05-19",
+      "episode_number": 6,
+      "id": 1,
+      "name": "Name",
+      "overview": "Overview",
+      "production_code": "1",
+      "season_number": 1,
+      "still_path": "/path.jpg",
+      "vote_average": 1.0,
+      "vote_count": 1
+    },
+    "name": "Name",
+    "next_episode_to_air": null,
+    "networks": [
+      {
+        "name": "HBO",
+        "id": 1,
+        "logo_path": "/path.png",
+        "origin_country": "US"
+      }
+    ],
+    "number_of_episodes": 10,
+    "number_of_seasons": 1,
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_name": "Original Name",
+    "overview": "Overview",
+    "popularity": 1.0,
+    "poster_path": "/path.jpg",
+    "production_companies": [
+      {
+        "id": 1,
+        "logo_path": "/path.png",
+        "name": "Revolution Sun Studios",
+        "origin_country": "US"
+      },
+      {
+        "id": 2,
+        "logo_path": null,
+        "name": "Television 360",
+        "origin_country": ""
+      }
+      
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "seasons": [
+      {
+        "air_date": "2010-12-05",
+        "episode_count": 10,
+        "id": 1,
+        "name": "Specials",
+        "overview": "Overview",
+        "poster_path": "/path.jpg",
+        "season_number": 0
+      }
+     
+    ],
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Status",
+    "tagline": "Tagline",
+    "type": "Type",
+    "vote_average": 1.0,
+    "vote_count": 1
+  }
