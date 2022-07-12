@@ -1,0 +1,30 @@
+{
+    "dates": {
+      "maximum": "2022-03-22",
+      "minimum": "2022-03-04"
+    },
+    "page": 1,
+    "results": [
+      {
+        "backdrop_path": "/path.jpg",
+        "genre_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "id": 1,
+        "original_language": "en",
+        "original_name": "Original Name",
+        "overview": "Overview",
+        "popularity": 1.0,
+        "poster_path": "/path.jpg",
+        "first_air_date": "2010-06-08",
+        "name": "Name",
+        "vote_average": 1.0,
+        "vote_count": 1
+      }
+    ],
+    "total_results": 20000,
+    "total_pages": 1000
+  }
