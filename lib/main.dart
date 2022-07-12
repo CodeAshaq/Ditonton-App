@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
 import 'package:about/about.dart';
-import 'package:core/presentation/navigation/bottom_navigation.dart';
 import 'package:core/presentation/navigation/watchlist.dart';
+import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
@@ -35,13 +35,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ditonton/injection.dart' as di;
-//DANIZA SALSABILA
 
-void main() async  {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   di.init();
   runApp(MyApp());
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -78,7 +86,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<TvDetailBloc>(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (_) => di.locator<RecommendationTvBloc>(),
         ),
         BlocProvider(
@@ -102,7 +110,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: kRichBlack,
           textTheme: kTextTheme,
         ),
-        home: BottomNav(),
+        home: HomeMoviePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -121,7 +129,6 @@ class MyApp extends StatelessWidget {
             case HomeTVSeriesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => HomeTVSeriesPage());
 
-            
             case '/tv':
               return MaterialPageRoute(builder: (_) => HomeTVSeriesPage());
             case PopularTvPage.ROUTE_NAME:
@@ -148,7 +155,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => WatchlistTvPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
-            
+
             default:
               return MaterialPageRoute(builder: (_) {
                 return Scaffold(

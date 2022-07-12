@@ -1,4 +1,5 @@
 import 'package:about/about.dart';
+// ignore: depend_on_referenced_packages
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/presentation/navigation/watchlist.dart';
 import 'package:movie/presentation/bloc/now_playing/now_playing_movies_bloc.dart';
