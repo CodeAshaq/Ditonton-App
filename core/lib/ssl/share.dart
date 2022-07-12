@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/io_client.dart';
 
 class Shared {

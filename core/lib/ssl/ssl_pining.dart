@@ -1,4 +1,6 @@
+// ignore: depend_on_referenced_packages
 import 'package:http/io_client.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:core/ssl/share.dart';
 

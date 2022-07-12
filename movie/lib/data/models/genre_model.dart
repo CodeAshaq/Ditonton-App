@@ -1,10 +1,12 @@
+// ignore_for_file: unnecessary_this
 
+// ignore: depend_on_referenced_packages
 import 'package:equatable/equatable.dart';
 import 'package:movie/domain/entities/genre.dart';
 
 
 class GenreModel extends Equatable {
-  GenreModel({
+  const GenreModel({
     required this.id,
     required this.name,
   });

@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:movie/domain/usecases/get_watchlist_movies.dart';
-// import 'package:movie/domain/usecases/get_watchlist_status.dart';
-// import 'package:movie/domain/usecases/remove_watchlist.dart';
-// import 'package:movie/domain/usecases/save_watchlist.dart';
+
 import 'package:rxdart/rxdart.dart';
 
 import '../../../domain/entities/movie.dart';

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:core/core.dart';
 
 class AboutPage extends StatelessWidget {
+  // ignore: constant_identifier_names
   static const ROUTE_NAME = '/about';
+
+  const AboutPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,6 @@ class AboutPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  // color: Color(0xFF003566),
                   color: kPrussianBlue,
                   child: Center(
                     child: Image.asset(
@@ -27,8 +29,7 @@ class AboutPage extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(32.0),
                   color: kMikadoYellow,
-                  //  color: Color(0xFFffc300),
-                  child: Text(
+                  child: const Text(
                     'Ditonton merupakan sebuah aplikasi katalog film yang dikembangkan oleh Dicoding Indonesia sebagai contoh proyek aplikasi untuk kelas Menjadi Flutter Developer Expert.',
                     style: TextStyle(color: Colors.black87, fontSize: 16),
                     textAlign: TextAlign.justify,
@@ -40,7 +41,7 @@ class AboutPage extends StatelessWidget {
           SafeArea(
             child: IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
             ),
           )
         ],

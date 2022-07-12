@@ -5,13 +5,14 @@ import 'package:tv/presentation/pages/tv/watchlist_tv_page.dart';
 
 class WatchList extends StatelessWidget {
   const WatchList({ Key? key }) : super(key: key);
+  // ignore: constant_identifier_names
   static const ROUTE_NAME = '/watchlist';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist Ditonton', textAlign: TextAlign.center,),
+        title: const Text('Watchlist Ditonton', textAlign: TextAlign.center,),
       ),
       body: Padding(padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
@@ -19,15 +20,15 @@ class WatchList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
-              leading: Icon(Icons.movie),
-              title: Text('Movie'),
+              leading: const Icon(Icons.movie),
+              title: const Text('Movie'),
               onTap: (){
                 Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
               },
             ),
             ListTile(
-              leading: Icon(Icons.tv_rounded),
-              title: Text('TV Series'),
+              leading: const Icon(Icons.tv_rounded),
+              title: const Text('TV Series'),
               onTap: (){
                 Navigator.pushNamed(context, WatchlistTvPage.ROUTE_NAME);
               },
