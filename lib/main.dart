@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 import 'package:about/about.dart';
 import 'package:core/presentation/navigation/watchlist.dart';
-import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
@@ -43,14 +42,6 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
 
 class MyApp extends StatelessWidget {
   @override
