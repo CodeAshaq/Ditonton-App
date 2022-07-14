@@ -4,6 +4,8 @@ import '../models/movie_detail_model.dart';
 import '../models/movie_model.dart';
 import '../models/movie_response.dart';
 import 'package:core/ssl/ssl_pining.dart';
+import 'package:http/http.dart' as http;
+
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
@@ -20,7 +22,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   // ignore: constant_identifier_names
   static const BASE_URL = 'https://api.themoviedb.org/3';
 
-  final ApiIOClient client;
+  final http.Client client;
 
   MovieRemoteDataSourceImpl({required this.client});
 

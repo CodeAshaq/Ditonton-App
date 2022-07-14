@@ -2,9 +2,14 @@ import 'package:http/io_client.dart';
 import 'package:http/http.dart' as http;
 import 'package:core/ssl/share.dart';
 
-class ApiIOClient extends IOClient {
-  @override
-  Future<http.Response> get(Uri url, {Map<String, String>? headers}) async {
-    return await Shared.initializeIOClient().then((value) => value.get(url));
+class ApiIOClient {
+  static Future<http.Client> get _instance async =>
+      _clientInstance ??= await Shared.createLEClient();
+
+  static http.Client? _clientInstance;
+  static http.Client get client => _clientInstance ?? http.Client();
+
+  static Future<void> init() async {
+    _clientInstance = await _instance;
   }
 }

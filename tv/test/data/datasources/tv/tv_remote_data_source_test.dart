@@ -16,10 +16,10 @@ void main() {
   const BASE_URL = 'https://api.themoviedb.org/3';
 
   late TvRemoteDataSourceImpl dataSourceTv;
-  late MockApiIOClient mockHttpClient;
+  late MockHttpClient mockHttpClient;
 
   setUp(() {
-    mockHttpClient = MockApiIOClient();
+    mockHttpClient = MockHttpClient();
     dataSourceTv = TvRemoteDataSourceImpl(client: mockHttpClient);
   });
 
@@ -31,10 +31,9 @@ void main() {
     test('should return list of TV Series Model when the response code is 200',
         () async {
       // arrange
-      when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv/now_playing_tv.json'), 200));
+      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/tv/now_playing_tv.json'), 200));
       // act
       final result = await dataSourceTv.getNowPlayingTv();
       // assert
@@ -45,8 +44,7 @@ void main() {
         'should throw a ServerException when the response code is 404 or other',
         () async {
       // arrange
-      when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
+      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSourceTv.getNowPlayingTv();
@@ -56,9 +54,9 @@ void main() {
   });
 
   group('get Popular TV Series', () {
-    final tTvList =
-        TvResponse.fromJson(json.decode(readJson('dummy_data/tv/popular_tv.json')))
-            .tvList;
+    final tTvList = TvResponse.fromJson(
+            json.decode(readJson('dummy_data/tv/popular_tv.json')))
+        .tvList;
 
     test('should return list of TV Series when response is success (200)',
         () async {
@@ -90,7 +88,8 @@ void main() {
             json.decode(readJson('dummy_data/tv/top_rated_tv.json')))
         .tvList;
 
-    test('should return list of TV Series when response code is 200 ', () async {
+    test('should return list of TV Series when response code is 200 ',
+        () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
           .thenAnswer((_) async =>

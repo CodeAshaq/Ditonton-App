@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:http/io_client.dart';
@@ -22,7 +24,7 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   static const API_KEY = 'api_key=2174d146bb9c0eab47529b2e77d6b526';
   static const BASE_URL = 'https://api.themoviedb.org/3';
 
-  final ApiIOClient client;
+  final http.Client client;
 
   TvRemoteDataSourceImpl({required this.client});
 
