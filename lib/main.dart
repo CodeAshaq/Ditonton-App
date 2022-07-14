@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:about/about.dart';
 import 'package:core/presentation/navigation/watchlist.dart';
+import 'package:core/ssl/ssl_pining.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
@@ -38,10 +39,10 @@ import 'package:ditonton/injection.dart' as di;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await ApiIOClient.init();
   di.init();
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   @override

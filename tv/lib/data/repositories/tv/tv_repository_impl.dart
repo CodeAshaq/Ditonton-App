@@ -3,12 +3,6 @@ import 'dart:io';
 import 'package:core/utils/exception.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
-// import 'package:ditonton/data/datasources/datasource_tv/tv/tv_local_datasource.dart';
-// import 'package:ditonton/data/datasources/datasource_tv/tv/tv_remote_datasource.dart';
-// import 'package:ditonton/data/models/models_tv/tv_table.dart';
-// import 'package:ditonton/domain/entities/tv/tvseries.dart';
-// import 'package:ditonton/domain/entities/tv/tv_detail.dart';
-// import 'package:ditonton/domain/repositories/tv/tv_repository.dart';
 
 import '../../../domain/entities/tv/tv_detail.dart';
 import '../../../domain/entities/tv/tvseries.dart';
@@ -16,8 +10,6 @@ import '../../../domain/repositories/tv/tv_repository.dart';
 import '../../datasources/datasource_tv/tv/tv_local_datasource.dart';
 import '../../datasources/datasource_tv/tv/tv_remote_datasource.dart';
 import '../../models/models_tv/tv_table.dart';
-// import 'package:ditonton/common/exception.dart';
-// import 'package:ditonton/common/failure.dart';
 
 class TvRepositoryImpl implements TvRepository {
   final TvRemoteDataSource remoteDataSource;
@@ -32,11 +24,15 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, List<Tv>>> getNowPlayingTv() async {
     try {
       final result = await remoteDataSource.getNowPlayingTv();
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -49,6 +45,10 @@ class TvRepositoryImpl implements TvRepository {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -56,11 +56,15 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, List<Tv>>> getTvRecommendations(int id) async {
     try {
       final result = await remoteDataSource.getTvRecommendations(id);
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -68,11 +72,15 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, List<Tv>>> getPopularTv() async {
     try {
       final result = await remoteDataSource.getPopularTv();
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -80,11 +88,15 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, List<Tv>>> getTopRatedTv() async {
     try {
       final result = await remoteDataSource.getTopRatedTv();
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -92,11 +104,15 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, List<Tv>>> searchTv(String query) async {
     try {
       final result = await remoteDataSource.searchTv(query);
-      return Right(result.map((model) => model.toEntity()).toList());
+      return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
       return Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('SSL Certificated not valid\n ${e.message}'));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -109,7 +125,7 @@ class TvRepositoryImpl implements TvRepository {
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      return Left(CommonFailure(e.toString()));
     }
   }
 
@@ -121,6 +137,8 @@ class TvRepositoryImpl implements TvRepository {
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      return Left(CommonFailure(e.toString()));
     }
   }
 

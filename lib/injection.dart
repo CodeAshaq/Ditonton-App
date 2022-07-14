@@ -182,8 +182,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelperTv>(() => DatabaseHelperTv());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
-
-  //SSL
-  locator.registerLazySingleton<ApiIOClient>(() => ApiIOClient());
+  locator.registerLazySingleton(() => ApiIOClient.client);
 }
